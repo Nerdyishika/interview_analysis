@@ -26,10 +26,12 @@ def recognize_speech_from_audio(audio_path: str, output_text_path: str):
             print(f"Error with speech recognition service: {e}")
 
 if __name__ == "__main__":
-    input_audio = r"C:\Users\HP\OneDrive\Desktop\AI model for interview\AI_model_for_interview.mp3"
-    temp_wav = r"temp_audio.wav"
-    output_text = r"transcription.txt"
-
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    # print(current_dir)
+    input_audio = os.path.join(current_dir,"AI_model_for_interview.mp3")  
+    temp_wav = os.path.join(current_dir,"temp_audio.wav")
+    output_text = os.path.join(current_dir,"transcription.txt")
+    # print(input_audio, temp_wav, output_text)
     convert_audio_to_wav(input_audio, temp_wav)
     recognize_speech_from_audio(temp_wav, output_text)
 
