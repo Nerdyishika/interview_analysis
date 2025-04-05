@@ -1,0 +1,23 @@
+from moviepy import VideoFileClip
+
+def video_to_audio(video_file_path, audio_file_path):
+    try:
+        # Load the video file
+        video_clip = VideoFileClip(video_file_path)
+        
+        # Extract audio
+        audio_clip = video_clip.audio
+        
+        # Write the audio to a file (explicitly specifying codec)
+        audio_clip.write_audiofile(audio_file_path + ".mp3", codec='mp3') 
+        
+        # Close the clips
+        audio_clip.close()
+        video_clip.close()
+        
+        print(f"Audio extracted and saved to {audio_file_path}.mp3")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Example usage
+video_to_audio(r"C:\Users\HP\Downloads\Interview with a Senior Python Developer - Part1.mp4", r"C:\Users\HP\OneDrive\Desktop\AI_model_for_interview")
